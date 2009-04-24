@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<language id="com.mthjones.Python">
+		<root-zone>sourcecode.python</root-zone>
+		
+		<syntax-name>sourcecode.python</syntax-name>
+		
+		<name>Python</name>
+		
+		<detectors>
+			<!-- Checks for .py extension -->
+			<extension casesensitive="false">py</extension>
+			<!-- Checks for python shebang -->
+			<match-content lines="1">#!/[\w/ ]+python</match-content>
+		</detectors>
+	</language>
+	
+	<meta>
+		<name>Python</name>
+		<description>A full syntax description of the Python programming language</description>
+		<author>Matt Jones</author>
+		<identifier>com.mthjones.Sugar.Python</identifier>
+		<version status="development">0.1</version>
+		<dependencies>
+			<dependency id="name.elliottcable.Sugar.Regex">Regex</dependency>
+		</dependencies>
+	</meta>
+</settings>

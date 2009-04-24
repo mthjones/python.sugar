@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemizer>
+	<!-- Matches a shebang line (like `#!/usr/bin/env python`) -->
+	<recipe name="metadata.processing.comment.shebang">
+		<selector>metadata.processing.comment.shebang > path:capture(name)</selector>
+	</recipe>
+	
+	<!-- Matches an encoding line (like `# encoding: utf-8`) -->
+	<recipe name="metadata.processing.comment.encoding">
+		<selector>metadata.processing.comment.encoding > encoding:capture(name)</selector>
+	</recipe>
+	
+	<recipe name="function">
+		<selector>container.function > name:capture(name)</selector>
+	</recipe>
+	
+	<!-- Matches a class definition -->
+	<recipe name="class">
+		<selector>container.class > name:capture(name)</selector>
+		<!--<start-selector>container.class:has-child(name:capture(name))</start-selector>
+		<end-selector>container.class:has-child(whitespace:capture(name))</end-selector>-->
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>
+	
+	<!-- Matches tripe-quoted strings -->
+	<recipe name="docstring">
+		<selector>metadata.comment.documentation > docstring:capture(name)</selector>
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>
+</itemizer>
