@@ -13,22 +13,30 @@
 			<include collection="metadata.processing" />
 			<include collection="metadata.comment" />
 			<!--<include collection="metadata.type-signature" />-->
+			
 			<include collection="literal.collection" />
+			
 			<include collection="container.class" />
 			<include collection="container.block" />
 			<include collection="container.function" />
-			<include collection="identifier.function" />
+			
+			<include collection="identifier.decorator" />
 			<include collection="identifier.variable" />
 			<include collection="identifier.class" />
 			<include collection="identifier.constant" />
 			<include collection="identifier.type" />
+			
 			<include collection="literal.keyword" />
 			<include collection="literal.string" />
 			<include collection="literal.numeric" />
+			
 			<include collection="delimiter" />
+			
 			<include collection="keyword" />
+			<include collection="identifier.function" />
+			
 			<include collection="operator" />
-	    </collection>
+		</collection>
 	    
 		<!--  
 			============
@@ -338,7 +346,7 @@
 		<collection name="identifier.function">
 			<zone name="identifier.function">
 				<starts-with>
-					<expression>(\w+)\s*(\()</expression>
+					<expression>([a-zA-Z_]\w*)\s*(\()</expression>
 					<capture number="1" name="name" />
 					<capture number="2" name="delimiter.balanced.parenthesis.begin" />
 				</starts-with>
@@ -348,20 +356,55 @@
 				</ends-with>
 				<subzones>
 					<include collection="language" />
-					<include collection="identifier.variable.parameter" />
 				</subzones>
 			</zone>
 		</collection>
 		
-		<!--<collection name="identifier.decorator">
+		<collection name="identifier.decorator">
 			<zone name="identifier.decorator.function">
-				
+				<starts-with>
+					<expression>(@)([a-zA-Z_]\w*)(\()</expression>
+					<capture number="1" name="modifier" />
+					<capture number="2" name="name" />
+					<capture number="3" name="delimiter.balanced.parenthesis.begin" />
+				</starts-with>
+				<ends-with>
+					<expression>(\))\s*$</expression>
+					<capture number="1" name="delimiter.balanced.parenthesis.end" />
+				</ends-with>
+				<subzones>
+					<include collection="language" />
+				</subzones>
+			</zone>
+			
+			<zone name="identifier.decorator.function">
+				<expression>(@)([a-zA-Z_]\w*)</expression>
+				<capture number="1" name="modifier" />
+				<capture number="2" name="name" />
 			</zone>
 			
 			<zone name="identifier.decorator.class">
-			
+				<starts-with>
+					<expression>(@)([a-zA-Z_]\w*)(\()</expression>
+					<capture number="1" name="modifier" />
+					<capture number="2" name="name" />
+					<capture number="3" name="delimiter.balanced.parenthesis.begin" />
+				</starts-with>
+				<ends-with>
+					<expression>(\))\s*$</expression>
+					<capture number="1" name="delimiter.balanced.parenthesis.end" />
+				</ends-with>
+				<subzones>
+					<include collection="language" />
+				</subzones>
 			</zone>
-		</collection>-->
+			
+			<zone name="identifier.decorator.class">
+				<expression>(@)([a-zA-Z_]\w*)</expression>
+				<capture number="1" name="modifier" />
+				<capture number="2" name="name" />
+			</zone>
+		</collection>
 		
 		<collection name="identifier.type">
 			<zone name="identifier.type.bool">
@@ -787,6 +830,7 @@
 				<expression>\^=</expression>
 			</zone>
 			<zone name="operator.accessor.assign">
+				<!-- This is not technically an operator in Python, but it makes the most sense to keep it in this class regardless. -->
 				<expression>=</expression>
 			</zone>
 			

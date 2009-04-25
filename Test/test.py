@@ -92,9 +92,11 @@ ooooooooooooooooooooong
 (1, 2, 3, 4, 5, 6)
 
 # storage types
+@classwrapper
 class ABC(object, metaclass=Blah):
 	__metaclass__ = ABCMeta
 	
+	@classmethod(arg1, arg2)
 	def a(self, b, c, d):
 		print("hello!")
 		print  ("hello")
