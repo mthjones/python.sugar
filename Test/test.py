@@ -56,6 +56,8 @@ ooooooooooooooooooooong
 1-15j
 0 ++++++ 1j
 1.5 ++++ 1j
+1.5e10 ++ 1.0j
+0b11001 +-+ 20j
 
 0b010111
 0b000002 # should fail: 2 not binary
@@ -98,7 +100,7 @@ class ABC(object, metaclass=Blah):
 	__metaclass__ = ABCMeta
 	
 	@not_builtin_decorator
-	@classmethod(arg1, arg2)
+	@classmethod
 	def a(self, b, c, d):
 		print("hello!")
 		print  ("hello")

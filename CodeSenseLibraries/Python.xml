@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <codesense version="1.0">
-	<!--<behavior>
+	<!--
+	<behavior>
 		<append-dynamic>
-			<matched-suffix>\s*(;)?</matched-suffix>
-			<transform-into>$0(?1::;)</transform-into>
+			<matched-suffix>(\s*:)|[^:]</matched-suffix>
+			<transform-into>$0</transform-into>
 			
-			<confirm-partial characters="_" />
+			<confirm-partial characters="._" />
 		</append-dynamic>
 	</behavior>
 	-->
+	
 	<set name="com.mthjones.python.builtins.functions">
 		<behavior>
 			<append-dynamic>
 				<matched-suffix>(\s*:)|[^:]</matched-suffix>
-				<transform-into>\(${1:put something in me!}\)</transform-into>
-				
-				<confirm-partial characters="_" />
+				<transform-into>(${1:args})</transform-into>
 			</append-dynamic>
+
+			<confirm-partial characters="._" />
 		</behavior>
 		<completion string="abs" />
 		<completion string="all" />
@@ -40,16 +42,14 @@
 		<completion string="enumerate" />
 		<completion string="eval" />
 		<completion string="execfile" />
-		<completion string="file" />
-		<!--
+		<completion string="file">
 			<behavior>
 				<append-dynamic>
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
-					<transform-into>(?1::\('${1:/path/to/file}'${2:, '${3:mode}'${4:, ${5:bufsize}}}\))</transform-into>
+					<transform-into>(?1::('${1:/path/to/file}'${2:, '${3:mode}'${4:, ${5:bufsize}}}))</transform-into>
 				</append-dynamic>
 			</behavior>
 		</completion>
-		-->
 		<completion string="filter" />
 		<completion string="float" />
 		<completion string="format" />
@@ -286,13 +286,14 @@
 		<completion string="ZeroDivisionError" />
 	</set>
 	
-	<set name="com.mthjones.python.modules">
+	<set name="com.mthjones.python.modules" casesensitive="true">
 		<behavior>
 			<append-dynamic>
-				<matched-suffix>(\s+)</matched-suffix>
+				<matched-suffix>(\s*:)|[^:]</matched-suffix>
 				<transform-into>$0</transform-into>
-				<confirm-partial characters="._" />
 			</append-dynamic>
+			
+			<confirm-partial characters="._" />
 		</behavior>
 		<completion string="__builtin__" /> <!-- 2.6 -->
 		<completion string="__future__" />
