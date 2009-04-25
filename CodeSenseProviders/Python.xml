@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <codesense>
+	<!--<provider>
+		<!-- For suggesting modules when using from/import -- >
+		<selector>python > keyword.control.import.from, python > keyword.control.import.import</selector>
+		
+		<completions>com.mthjones.python.modules</completions>
+		
+		<complete-match capture="1">\s+([a-zA-Z_]\w*)</complete-match>
+		
+		<require-suffix>\s</require-suffix>
+	</provider>
+	-->
 	
+	<provider>
+		<selector>sourcecode.python, sourcecode.python *</selector>
+		<completions>com.mthjones.python.builtins.functions</completions>
+		<complete-match>[a-zA-Z_]\w*</complete-match>
+	</provider>
 </codesense>

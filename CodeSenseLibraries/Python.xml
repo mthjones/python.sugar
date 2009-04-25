@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <codesense version="1.0">
-	<behavior>
-	
+	<!--<behavior>
+		<append-dynamic>
+			<matched-suffix>\s*(;)?</matched-suffix>
+			<transform-into>$0(?1::;)</transform-into>
+			
+			<confirm-partial characters="_" />
+		</append-dynamic>
 	</behavior>
-	
+	-->
 	<set name="com.mthjones.python.builtins.functions">
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\s*:)|[^:]</matched-suffix>
+				<transform-into>\(${1:put something in me!}\)</transform-into>
+				
+				<confirm-partial characters="_" />
+			</append-dynamic>
+		</behavior>
 		<completion string="abs" />
 		<completion string="all" />
 		<completion string="any" />
@@ -28,6 +41,15 @@
 		<completion string="eval" />
 		<completion string="execfile" />
 		<completion string="file" />
+		<!--
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(?1::\('${1:/path/to/file}'${2:, '${3:mode}'${4:, ${5:bufsize}}}\))</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		-->
 		<completion string="filter" />
 		<completion string="float" />
 		<completion string="format" />
@@ -265,6 +287,13 @@
 	</set>
 	
 	<set name="com.mthjones.python.modules">
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\s+)</matched-suffix>
+				<transform-into>$0</transform-into>
+				<confirm-partial characters="._" />
+			</append-dynamic>
+		</behavior>
 		<completion string="__builtin__" /> <!-- 2.6 -->
 		<completion string="__future__" />
 		<completion string="__main__" />

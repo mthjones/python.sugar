@@ -3,7 +3,12 @@
 	<!-- 
 	Following standards as outlined by elliottcable at:
 		 http://wiki.macrabbit.com/forums/viewthread/117/
-	-->	 
+	-->
+	
+	<!-- TODO:
+		- Differentiate between class and function decorators?
+		- Comprehensions? (dict/list/generators)
+	-->
 	<zones>
 		<include collection="language" />
 	</zones>
@@ -24,7 +29,6 @@
 			<include collection="identifier.variable" />
 			<include collection="identifier.class" />
 			<include collection="identifier.constant" />
-			<include collection="identifier.type" />
 			
 			<include collection="literal.keyword" />
 			<include collection="literal.string" />
@@ -34,6 +38,7 @@
 			
 			<include collection="keyword" />
 			<include collection="identifier.function" />
+			<include collection="identifier.type" />
 			
 			<include collection="operator" />
 		</collection>
@@ -93,20 +98,422 @@
 		</collection>
 		
 		<collection name="literal.numeric">
+			<!-- Python numeric types are waaaaayyy too broad -->
+			
 			<!-- According to Python spec, +/- signs are not part of the number and should therefore not belong in the numeric specification here. -->
+			
+			<zone name="literal.numeric.complex.long">
+				<!-- decimal long real : integer imag -->
+				<expression>\b((\d+[lL])(\s*([+-](\s[+-])?)+\s*)+)\d+[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- decimal long real : float with exponent imag normal -->
+				<expression>\b((\d+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- decimal long real : float with exponent imag no integer preceding decimal -->
+				<expression>\b((\d+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- decimal long real : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((\d+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- decimal long real : float imag normal -->
+				<expression>\b((\d+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- decimal long real : float imag no integer preceding decimal -->
+				<expression>\b((\d+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- decimal long real : float imag no integer succeeding decimal -->
+				<expression>\b((\d+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex.long">
+				<!-- binary long real : integer imag -->
+				<expression>\b((0[bB][01]+[lL])(\s*([+-](\s[+-])?)+\s*)+)\d+[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- binary long real : float with exponent imag normal -->
+				<expression>\b((0[bB][01]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- binary long real : float with exponent imag no integer preceding decimal -->
+				<expression>\b((0[bB][01]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- binary long real : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((0[bB][01]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- binary long real : float imag normal -->
+				<expression>\b((0[bB][01]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- binary long real : float imag no integer preceding decimal -->
+				<expression>\b((0[bB][01]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- binary long real : float imag no integer succeeding decimal -->
+				<expression>\b((0[bB][01]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex.long">
+				<!-- octal long real : integer imag -->
+				<expression>\b((0[oO]?[0-7]+[lL])(\s*([+-](\s[+-])?)+\s*)+)\d+[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- octal long real : float with exponent imag normal -->
+				<expression>\b((0[oO]?[0-7]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- octal long real : float with exponent imag no integer preceding decimal -->
+				<expression>\b((0[oO]?[0-7]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- octal long real : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((0[oO]?[0-7]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- octal long real : float imag normal -->
+				<expression>\b((0[oO]?[0-7]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- octal long real : float imag no integer preceding decimal -->
+				<expression>\b((0[oO]?[0-7]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- octal long real : float imag no integer succeeding decimal -->
+				<expression>\b((0[oO]?[0-7]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex.long">
+				<!-- hexadecimal long real : integer imag -->
+				<expression>\b((0[xX][a-fA-F0-9]+[lL])(\s*([+-](\s[+-])?)+\s*)+)\d+[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- hexadecimal long real : float with exponent imag normal -->
+				<expression>\b((0[xX][a-fA-F0-9]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- hexadecimal long real : float with exponent imag no integer preceding decimal -->
+				<expression>\b((0[xX][a-fA-F0-9]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- hexadecimal long real : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((0[xX][a-fA-F0-9]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- hexadecimal long real : float imag normal -->
+				<expression>\b((0[xX][a-fA-F0-9]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- hexadecimal long real : float imag no integer preceding decimal -->
+				<expression>\b((0[xX][a-fA-F0-9]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex.long">
+				<!-- hexadecimal long real : float imag no integer succeeding decimal -->
+				<expression>\b((0[xX][a-fA-F0-9]+[lL])(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex">
+				<!-- decimal real : integer imag -->
+				<expression>\b((\d+)(\s*([+-](\s[+-])?)+\s*)+)?\d+[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- decimal real : float with exponent imag normal -->
+				<expression>\b((\d+)(\s*([+-](\s[+-])?)+\s*)+)?(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- decimal real : float with exponent imag no integer preceding decimal -->
+				<expression>\b((\d+)(\s*([+-](\s[+-])?)+\s*)+)?(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- decimal real : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((\d+)(\s*([+-](\s[+-])?)+\s*)+)?(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- decimal real : float imag normal -->
+				<expression>\b((\d+)(\s*([+-](\s[+-])?)+\s*)+)?(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- decimal real : float imag no integer preceding decimal -->
+				<expression>\b((\d+)(\s*([+-](\s[+-])?)+\s*)+)?(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- decimal real : float imag no integer succeeding decimal -->
+				<expression>\b((\d+)(\s*([+-](\s[+-])?)+\s*)+)?(\d+\.)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex">
+				<!-- binary real : integer imag -->
+				<expression>\b((0[bB][01]+)(\s*([+-](\s[+-])?)+\s*)+)\d+[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- binary real : float with exponent imag normal -->
+				<expression>\b((0[bB][01]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- binary real : float with exponent imag no integer preceding decimal -->
+				<expression>\b((0[bB][01]+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- binary real : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((0[bB][01]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- binary real : float imag normal -->
+				<expression>\b((0[bB][01]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- binary real : float imag no integer preceding decimal -->
+				<expression>\b((0[bB][01]+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- binary real : float imag no integer succeeding decimal -->
+				<expression>\b((0[bB][01]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex">
+				<!-- octal real : integer imag -->
+				<expression>\b((0[oO]?[0-7]+)(\s*([+-](\s[+-])?)+\s*)+)\d+[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- octal real : float with exponent imag normal -->
+				<expression>\b((0[oO]?[0-7]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- octal real : float with exponent imag no integer preceding decimal -->
+				<expression>\b((0[oO]?[0-7]+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- octal real : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((0[oO]?[0-7]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- octal real : float imag normal -->
+				<expression>\b((0[oO]?[0-7]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- octal real : float imag no integer preceding decimal -->
+				<expression>\b((0[oO]?[0-7]+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- octal real : float imag no integer succeeding decimal -->
+				<expression>\b((0[oO]?[0-7]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex">
+				<!-- hexadecimal real : integer imag -->
+				<expression>\b((0[xX][a-fA-F0-9]+)(\s*([+-](\s[+-])?)+\s*)+)\d+[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- hexadecimal real : float with exponent imag normal -->
+				<expression>\b((0[xX][a-fA-F0-9]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- hexadecimal real : float with exponent imag no integer preceding decimal -->
+				<expression>\b((0[xX][a-fA-F0-9]+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- hexadecimal real : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((0[xX][a-fA-F0-9]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- hexadecimal real : float imag normal -->
+				<expression>\b((0[xX][a-fA-F0-9]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- hexadecimal real : float imag no integer preceding decimal -->
+				<expression>\b((0[xX][a-fA-F0-9]+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- hexadecimal real : float imag no integer succeeding decimal -->
+				<expression>\b((0[xX][a-fA-F0-9]+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real normal : integer imag -->
+				<expression>\b((\d+\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real normal : float with exponent imag normal -->
+				<expression>\b((\d+\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real normal : float with exponent imag no integer preceding decimal -->
+				<expression>\b((\d+\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real normal : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((\d+\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer preceding decimal : float with exponent imag normal -->
+				<expression>\b((\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer preceding decimal : float with exponent imag no integer preceding decimal -->
+				<expression>\b((\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer preceding decimal : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer succeeding decimal : float with exponent imag normal -->
+				<expression>\b((\d+\.[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer succeeding decimal : float with exponent imag no integer preceding decimal -->
+				<expression>\b((\d+\.[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer succeeding decimal : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((\d+\.[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real normal : float imag normal -->
+				<expression>\b((\d+\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real normal : float imag no integer preceding decimal -->
+				<expression>\b((\d+\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real normal : float imag no integer succeeding decimal -->
+				<expression>\b((\d+\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer preceding decimal : float imag normal -->
+				<expression>\b((\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer preceding decimal : float imag no integer preceding decimal -->
+				<expression>\b((\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer preceding decimal : float imag no integer succeeding decimal -->
+				<expression>\b((\.\d+[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer succeeding decimal : float imag normal -->
+				<expression>\b((\d+\.[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer succeeding decimal : float imag no integer preceding decimal -->
+				<expression>\b((\d+\.[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float with exponent real no integer succeeding decimal : float imag no integer succeeding decimal -->
+				<expression>\b((\d+\.[eE][+-]?\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex">
+				<!-- float real normal : integer imag -->
+				<expression>\b((\d+\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real normal : float with exponent imag normal -->
+				<expression>\b((\d+\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real normal : float with exponent imag no integer preceding decimal -->
+				<expression>\b((\d+\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real normal : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((\d+\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer preceding decimal : float with exponent imag normal -->
+				<expression>\b((\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer preceding decimal : float with exponent imag no integer preceding decimal -->
+				<expression>\b((\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer preceding decimal : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer succeeding decimal : float with exponent imag normal -->
+				<expression>\b((\d+\.)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer succeeding decimal : float with exponent imag no integer preceding decimal -->
+				<expression>\b((\d+\.)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer succeeding decimal : float with exponent imag no integer succeeding decimal -->
+				<expression>\b((\d+\.)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.[eE][+-]?\d+)[jJ]\b</expression>
+			</zone>
+			
+			<zone name="literal.numeric.complex">
+				<!-- float real normal : float imag normal -->
+				<expression>\b((\d+\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real normal : float imag no integer preceding decimal -->
+				<expression>\b((\d+\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real normal : float imag no integer succeeding decimal -->
+				<expression>\b((\d+\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer preceding decimal : float imag normal -->
+				<expression>\b((\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer preceding decimal : float imag no integer preceding decimal -->
+				<expression>\b((\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer preceding decimal : float imag no integer succeeding decimal -->
+				<expression>\b((\.\d+)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer succeeding decimal : float imag normal -->
+				<expression>\b((\d+\.)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer succeeding decimal : float imag no integer preceding decimal -->
+				<expression>\b((\d+\.)(\s*([+-](\s[+-])?)+\s*)+)(\.\d+)[jJ]\b</expression>
+			</zone>
+			<zone name="literal.numeric.complex">
+				<!-- float real no integer succeeding decimal : float imag no integer succeeding decimal -->
+				<expression>\b((\d+\.)(\s*([+-](\s[+-])?)+\s*)+)(\d+\.)[jJ]\b</expression>
+			</zone>
+			
 			<zone name="literal.numeric.float.with-exponent">
-				<expression>\b\d*?[.]\d+[eE][+-]?\d+\b</expression>
+				<!-- normal float : integer preceding and succeeding the decimal -->
+				<expression>\b\d+\.\d+[eE][+-]?\d+\b</expression>
+			</zone>
+			<zone name="literal.numeric.float.with-exponent">
+				<!-- no integer preceding decimal -->
+				<expression>\b\.\d+[eE][+-]?\d+\b</expression>
+			</zone>
+			<zone name="literal.numeric.float.with-exponent">
+				<!-- no integer succeeding decimal -->
+				<expression>\b\d+\.[eE][+-]?\d+\b</expression>
 			</zone>
 				
 			<zone name="literal.numeric.float">
+				<!-- normal float : integer preceding and succeeding the decimal -->
 				<expression>\b(\d+\.\d+)\b</expression>
 			</zone>
-			
 			<zone name="literal.numeric.float">
+				<!-- no integer preceding decimal -->
 				<expression>\b\d+\.\B</expression>
 			</zone>
-			
 			<zone name="literal.numeric.float">
+				<!-- no integer succeeding decimal -->
 				<expression>\B\.\d+\b</expression>
 			</zone>
 			
@@ -115,15 +522,6 @@
 				<expression>(?:[0-9]+)e[0-9]+\b</expression>
 			</zone>
 			-->
-			
-			<!-- This shouldn't be here, but I don't care. :) -->
-			<!-- this is awful. :/ -->
-			<zone name="literal.numeric.complex.long">
-				<expression>\b((\d+[lL])(\s*[+-]+\s*)+)?\d+[jJ]\b</expression>
-			</zone>
-			<zone name="literal.numeric.complex">
-				<expression>\b(\d+(\s*[+-]+\s*)+)?\d+[jJ]\b</expression>
-			</zone>
 			
 			<zone name="literal.numeric.integer.binary.long">
 				<expression>\b0[bB][01]+[lL]\b</expression>
@@ -344,6 +742,22 @@
 			===============
 		-->
 		<collection name="identifier.function">
+			<!-- Going against the standard here -->
+			<zone name="identifier.function.builtin">
+				<starts-with>
+					<expression>((abs)|(all)|(any)|(apply)|(basestring)|(bool)|(buffer)|(callable)|(chr)|(classmethod)|(cmp)|(coerce)|(compile)|(complex)|(delattr)|(dict)|(dir)|(divmod)|(enumerate)|(eval)|(execfile)|(file)|(filter)|(float)|(format)|(frozenset)|(getattr)|(globals)|(hasattr)|(hash)|(help)|(hex)|(id)|(input)|(int)|(intern)|(isinstance)|(issubclass)|(iter)|(len)|(list)|(locals)|(long)|(map)|(max)|(min)|(next)|(object)|(oct)|(open)|(ord)|(pow)|(print)|(property)|(range)|(raw_input)|(reduce)|(reload)|(repr)|(reversed)|(round)|(set)|(setattr)|(slice)|(sorted)|(staticmethod)|(str)|(sum)|(super)|(tuple)|(type)|(unichr)|(unicode)|(vars)|(xrange)|(zip)|(__import__))\s*(\()</expression>
+					<capture number="1" name="name" />
+					<capture number="78" name="delimiter.balanced.parenthesis.begin" />
+				</starts-with>
+				<ends-with>
+					<expression>(\))</expression>
+					<capture number="1" name="delimiter.balanced.parenthesis.end" />
+				</ends-with>
+				<subzones>
+					<include collection="language" />
+				</subzones>
+			</zone>
+			
 			<zone name="identifier.function">
 				<starts-with>
 					<expression>([a-zA-Z_]\w*)\s*(\()</expression>
@@ -361,9 +775,15 @@
 		</collection>
 		
 		<collection name="identifier.decorator">
+			<zone name="identifier.decorator.function.builtin">
+				<expression>(@)((classmethod)|(staticmethod)|(property))</expression>
+				<capture number="1" name="modifier" />
+				<capture number="2" name="name" />
+			</zone>
+			
 			<zone name="identifier.decorator.function">
 				<starts-with>
-					<expression>(@)([a-zA-Z_]\w*)(\()</expression>
+					<expression>(@)([a-zA-Z_][\w.]*)(\()</expression>
 					<capture number="1" name="modifier" />
 					<capture number="2" name="name" />
 					<capture number="3" name="delimiter.balanced.parenthesis.begin" />

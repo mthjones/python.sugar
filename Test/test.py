@@ -55,6 +55,7 @@ ooooooooooooooooooooong
 1+0j
 1-15j
 0 ++++++ 1j
+1.5 ++++ 1j
 
 0b010111
 0b000002 # should fail: 2 not binary
@@ -96,11 +97,15 @@ ooooooooooooooooooooong
 class ABC(object, metaclass=Blah):
 	__metaclass__ = ABCMeta
 	
+	@not_builtin_decorator
 	@classmethod(arg1, arg2)
 	def a(self, b, c, d):
 		print("hello!")
 		print  ("hello")
 		print "hello"
+		globals()
+		file
+		file('some random path')
 		self.__init__
 		self.  do_something
 	
@@ -110,6 +115,8 @@ lambda abc=5, a, e: print(x)
 # keywords
 from blah import *
 import a
+
+from
 
 try
 except
