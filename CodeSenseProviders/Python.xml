@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-@description Defines the Python CodeSense Library
+@description Defines the Python CodeSense Providers
 @author 	 Matt Jones <m.t.h.jones@gmail.com>
 @copyright 	 The MIT License
 
@@ -25,26 +25,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 <codesense>
-	<!--
 	<provider>
-		<! For suggesting modules when using from/import >
-		<selector>python > keyword.control.import.from, python > keyword.control.import.import</selector>
-		
-		<completions>com.mthjones.python.modules</completions>
-		
-		<complete-match capture="1">\s+([a-zA-Z_]\w*)</complete-match>
-		
-		<require-suffix>\s</require-suffix>
-	</provider>
-	-->
-	
-	<provider>
-		<selector>python:not(literal.string, metadata.comment)</selector>
+		<selector>python, python *:not(literal.string, metadata.comment, container.function > name, container.class > name)</selector>
 		<completions>com.mthjones.python.builtins.functions</completions>
 		<completions>com.mthjones.python.builtins.statements</completions>
 		<completions>com.mthjones.python.builtins.special-method-names</completions>
 		<completions>com.mthjones.python.builtins.exceptions</completions>
 		<completions>com.mthjones.python.modules</completions>
-		<complete-match capture="0">([a-zA-Z_.][\w.]*)+</complete-match>
+		<complete-match>[a-zA-Z_][\w.]*</complete-match>
 	</provider>
 </codesense>

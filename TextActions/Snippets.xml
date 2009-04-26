@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+@description Defines the Python Snippets
+@author 	 Matt Jones <m.t.h.jones@gmail.com>
+@copyright 	 The MIT License
+
+Copyright (c) 2009
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<action-recipes>
+	<snippet id="com.mthjones.TextActions.Python.Class" category="actions.text.Python/python.tools.Snippets.container">
+		<title>Class</title>
+		<text-trigger>class</text-trigger>
+		<text><![CDATA[class ${1:ClassName}${2:(${3:SuperClass})}:
+	${4:"""${5:docstring}"""}
+	${6:def __init__(${7:self}${8:, ${9:args}}):
+		${10:"""${11:docstring}"""}
+		${12:pass}
+	}
+	$0
+
+]]></text>
+		<syntax-context>python, python *:not(literal.string, metadata.comment)</syntax-context>
+	</snippet>
+	
+	<snippet id="com.mthjones.TextActions.Python.Function" category="actions.text.Python/python.tools.Snippets.container">
+		<title>Function</title>
+		<text-trigger>def</text-trigger>
+		<text><![CDATA[def ${1:function_name}(${2:args}):
+	${3:"""${4:docstring}"""}
+	${5:pass}
+$0
+]]></text>
+		<syntax-context>python, python *:not(literal.string, metadata.comment)</syntax-context>
+	</snippet>
+	
+	<snippet id="com.mthjones.TextActions.Python.Lambda" category="actions.text.Python/python.tools.Snippets.container">
+		<title>Lambda</title>
+		<text-trigger>lambda</text-trigger>
+		<text><![CDATA[lambda ${1:args}: ${2:pass}]]></text>
+		<syntax-context>python, python *:not(literal.string, metadata.comment)</syntax-context>
+	</snippet>
+</action-recipes>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-@description Defines the Python Itemizers
+@description Defines the Python Text Actions
 @author 	 Matt Jones <m.t.h.jones@gmail.com>
 @copyright 	 The MIT License
 
@@ -24,36 +24,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
-<itemizer>
-	<!-- Matches a shebang line (like `#!/usr/bin/env python`) -->
-	<recipe name="metadata.processing.comment.shebang">
-		<selector>metadata.processing.comment.shebang > path:capture(name)</selector>
-	</recipe>
+<action-recipes>
+	<snippet id="com.mthjones.TextActions.Python.OpenCurlyBrace" category="hidden">
+		<title>Open Curly Brace</title>
+		<text-trigger key-equivalent="{"></text-trigger>
+		<text>{$1}$0</text>
+		<syntax-context>python, python *:not(literal.string, metadata.comment)</syntax-context>
+	</snippet>
 	
-	<!-- Matches an encoding line (like `# encoding: utf-8`) -->
-	<recipe name="metadata.processing.comment.encoding">
-		<selector>metadata.processing.comment.encoding > encoding:capture(name)</selector>
-	</recipe>
+	<snippet id="com.mthjones.TextActions.Python.OpenSquareBracket" category="hidden">
+		<title>Open Square Bracket</title>
+		<text-trigger key-equivalent="["></text-trigger>
+		<text>[$1]$0</text>
+		<syntax-context>python, python *:not(literal.string, metadata.comment)</syntax-context>
+	</snippet>
 	
-	<recipe name="function">
-		<selector>container.function > name:capture(name)</selector>
-	</recipe>
-	
-	<!-- Matches a class definition -->
-	<recipe name="class">
-		<selector>container.class > name:capture(name)</selector>
-		<!--<start-selector>container.class:has-child(name:capture(name))</start-selector>
-		<end-selector>container.class:has-child(whitespace:capture(name))</end-selector>-->
-		<subrecipes>
-			<include-root-recipes />
-		</subrecipes>
-	</recipe>
-	
-	<!-- Matches tripe-quoted strings -->
-	<recipe name="docstring">
-		<selector>metadata.comment.documentation > docstring:capture(name)</selector>
-		<subrecipes>
-			<include-root-recipes />
-		</subrecipes>
-	</recipe>
-</itemizer>
+	<snippet id="com.mthjones.TextActions.Python.OpenParenthesis" category="hidden">
+		<title>Open Parenthesis</title>
+		<text-trigger key-equivalent="("></text-trigger>
+		<text>($1)$0</text>
+		<syntax-context>python, python *:not(literal.string, metadata.comment)</syntax-context>
+	</snippet>
+</action-recipes>

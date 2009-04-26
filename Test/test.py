@@ -230,3 +230,12 @@ in
 "  "
 '  '
 `  `
+
+class ClassName(SuperClass):
+	"""docstring"""
+	def __init__(self, args):
+		"""docstring"""
+		pass
+	
+
+
