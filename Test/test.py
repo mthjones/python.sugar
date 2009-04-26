@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-@description Defines the Python CodeSense Library
+@description Python Sugar tests
 @author 	 Matt Jones <m.t.h.jones@gmail.com>
 @copyright 	 The MIT License
 

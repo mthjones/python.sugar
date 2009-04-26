@@ -29,14 +29,4 @@ THE SOFTWARE.
 		<syntax-context>python, python *</syntax-context>
 		<value>#</value>
 	</setting>
-	
-	<setting name="comment-multiline-start">
-		<syntax-context>python, python *</syntax-context>
-		<value>"""</value>
-	</setting>
-	
-	<setting name="comment-multiline-end">
-		<syntax-context>python, python *</syntax-context>
-		<value>"""</value>
-	</setting>
 </settings>
