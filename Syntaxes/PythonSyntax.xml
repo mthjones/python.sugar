@@ -1060,7 +1060,7 @@ THE SOFTWARE.
 					<capture number="3" name="invalid.illegal.class-definition" />
 				</ends-with>
 				<subzones>
-					<zone>
+					<zone name="container.parameters">
 						<starts-with>
 							<expression>(\()</expression>
 							<capture number="1" name="delimiter.balanced.parenthesis.begin" />
@@ -1092,7 +1092,7 @@ THE SOFTWARE.
 					<capture number="3" name="invalid.illegal.function-definition" />
 				</ends-with>
 				<subzones>
-					<zone>
+					<zone name="container.parameters">
 						<starts-with>
 							<expression>(\()</expression>
 							<capture number="1" name="delimiter.balanced.parenthesis.begin" />
@@ -1120,7 +1120,7 @@ THE SOFTWARE.
 					<capture number="1" name="delimiter.separator.block-start" />
 				</ends-with>
 				<subzones>
-					<zone>
+					<zone name="container.parameter">
 						<starts-with>
 							<expression>\s+</expression>
 						</starts-with>

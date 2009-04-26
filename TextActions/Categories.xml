@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-@description Defines the Python CodeSense Providers
+@description Defines Python Action menu categories
 @author 	 Matt Jones <m.t.h.jones@gmail.com>
 @copyright 	 The MIT License
 
@@ -24,19 +24,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
-<codesense>
-	<provider>
-		<selector>python, python *:not(literal.string, metadata.comment, container.function > name, container.class > name)</selector>
-		<completions>com.mthjones.python.builtins.functions</completions>
-		<completions>com.mthjones.python.builtins.statements</completions>
-		<completions>com.mthjones.python.builtins.exceptions</completions>
-		<completions>com.mthjones.python.modules</completions>
-		<complete-match>[a-zA-Z_][\w.]*</complete-match>
-	</provider>
+<action-categories>
+	<category id="actions.text.Python" show="sub">
+		<title>Python</title>
+	</category>
 	
-	<provider>
-		<selector>python container.function > name</selector>
-		<completions>com.mthjones.python.builtins.special-method-names</completions>
-		<complete-match>[a-zA-Z_]\w*</complete-match>
-	</provider>
-</codesense>
+	<category id="python.tools.Snippets.container" show="inline separated"></category>
+</action-categories>
