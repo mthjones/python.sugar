@@ -755,6 +755,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:name${2:, ${3:globals${4:, ${5:locals${6:, ${7:fromlist${8:, ${9:level}}}}}}}}})</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 	</set>
@@ -796,6 +798,8 @@
 				<matched-suffix>(\s*:)|[^:]</matched-suffix>
 				<transform-into>(${1:self}):</transform-into>
 			</append-dynamic>
+			
+			<confirm-partial characters="_" />
 		</behavior>
 		
 		<completion string="__abs__" />
@@ -806,6 +810,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -815,6 +821,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -826,6 +834,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}${2:, ${3:args}}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -835,6 +845,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -844,6 +856,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -855,6 +869,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:item}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -866,6 +882,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:instance}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -875,6 +893,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:name}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -884,6 +904,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:key}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -893,6 +915,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:i}, ${3:j}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -904,6 +928,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -913,6 +939,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -924,6 +952,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:exc_type}, ${3:exc_value}, ${4:traceback}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -933,6 +963,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -944,6 +976,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -953,6 +987,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:format_spec}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -962,6 +998,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -971,6 +1009,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:instance}, ${3:owner}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -980,6 +1020,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:name}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -989,6 +1031,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:name}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1007,6 +1051,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:i}, ${3:j}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1016,6 +1062,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1029,6 +1077,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1038,6 +1088,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1047,6 +1099,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1056,6 +1110,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1065,6 +1121,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1074,6 +1132,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1083,6 +1143,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1092,6 +1154,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1103,6 +1167,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}${2:, ${3:args}}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1116,6 +1182,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1125,6 +1193,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1134,6 +1204,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1143,6 +1215,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1163,6 +1237,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1172,6 +1248,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1185,6 +1263,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1194,6 +1274,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1203,6 +1285,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:key}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1212,6 +1296,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1221,6 +1307,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1230,6 +1318,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1241,6 +1331,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:cls}${2:, ${3:args}}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1254,6 +1346,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1265,6 +1359,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}${3:, ${4:modulo}}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1274,6 +1370,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1283,6 +1381,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1292,6 +1392,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1301,6 +1403,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1310,6 +1414,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1323,6 +1429,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1332,6 +1440,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1341,6 +1451,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1350,6 +1462,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1359,6 +1473,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1368,6 +1484,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}${2:, ${3:n}}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1377,6 +1495,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1395,6 +1515,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1404,6 +1526,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1413,6 +1537,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1422,6 +1548,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1431,6 +1559,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:instance}, ${3:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1440,6 +1570,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:name}, ${3:value}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1449,6 +1581,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:key}, ${3:value}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1458,6 +1592,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:i}, ${3:j}, ${4:sequence}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1469,6 +1605,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1478,6 +1616,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 		
@@ -1489,6 +1629,8 @@
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
 					<transform-into>(${1:self}, ${2:other}):</transform-into>
 				</append-dynamic>
+				
+				<confirm-partial characters="_" />
 			</behavior>
 		</completion>
 	</set>
