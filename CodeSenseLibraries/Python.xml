@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <codesense version="1.0">
-	<!--
-	<behavior>
-		<append-dynamic>
-			<matched-suffix>(\s*:)|[^:]</matched-suffix>
-			<transform-into>$0</transform-into>
-			
-			<confirm-partial characters="._" />
-		</append-dynamic>
-	</behavior>
-	-->
-	
 	<set name="com.mthjones.python.builtins.functions">
 		<behavior>
 			<append-dynamic>
@@ -20,29 +9,243 @@
 
 			<confirm-partial characters="._" />
 		</behavior>
-		<completion string="abs" />
-		<completion string="all" />
-		<completion string="any" />
-		<completion string="apply" />
-		<completion string="basestring" />
-		<completion string="bin" />
-		<completion string="bool" />
-		<completion string="buffer" />
-		<completion string="callable" />
-		<completion string="chr" />
-		<completion string="classmethod" />
-		<completion string="cmp" />
-		<completion string="coerce" />
-		<completion string="compile" />
-		<completion string="complex" />
-		<completion string="delattr" />
-		<completion string="dict" />
-		<completion string="dir" />
-		<completion string="divmod" />
-		<completion string="enumerate" />
-		<completion string="eval" />
-		<completion string="execfile" />
-		<completion string="file">
+		
+		<!-- These are taken from http://docs.python.org/2.6/library/functions.html and http://docs.python.org/3.0/library/functions.html -->
+		<completion string="abs">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="all">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="any">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="apply"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:function}, ${2:args}${3:, ${4:keywords}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="ascii"> <!-- 3.0 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="basestring"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>$0</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="bin">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="bool">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="buffer"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object}${2:, ${3:offset}${4:, ${5:size}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="bytearray"> <!-- 3.0 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:${2:arg}${3:, ${4:encoding${5:, ${6:errors}}}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="bytes"> <!-- 3.0 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:${2:arg}${3:, ${4:encoding${5:, ${6:errors}}}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="callable"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="chr">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:i})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="classmethod">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:function})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="cmp"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x}, ${2:y})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="coerce"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x}, ${2:y})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="compile">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:source}, ${2:filename}, ${3:mode}${4:, ${5:flags${6:, ${7:dont_inherit}}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="complex">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:real${2:, ${3:imag}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="delattr">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object}, ${2:name)</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="dict">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="dir">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="divmod">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:a}, ${2:b})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="enumerate">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable}${2:, ${3:start=0}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="eval">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:expression}${2:, ${3:globals${4:, ${5:locals}}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="exec"> <!-- 3.0 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object}${2:, ${3:globals${4:, ${5:locals}}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="execfile"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:filename}${2:, ${3:globals${4:, ${5:locals}}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="file"> <!-- 2.6 -->
 			<behavior>
 				<append-dynamic>
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
@@ -50,61 +253,510 @@
 				</append-dynamic>
 			</behavior>
 		</completion>
-		<completion string="filter" />
-		<completion string="float" />
-		<completion string="format" />
-		<completion string="frozenset" />
-		<completion string="getattr" />
-		<completion string="globals" />
-		<completion string="hasattr" />
-		<completion string="hash" />
-		<completion string="help" />
-		<completion string="hex" />
-		<completion string="id" />
-		<completion string="input" />
-		<completion string="int" />
-		<completion string="intern" />
-		<completion string="isinstance" />
-		<completion string="issubclass" />
-		<completion string="iter" />
-		<completion string="len" />
-		<completion string="list" />
-		<completion string="locals" />
-		<completion string="long" />
-		<completion string="map" />
-		<completion string="max" />
-		<completion string="min" />
-		<completion string="next" />
-		<completion string="object" />
-		<completion string="oct" />
-		<completion string="open" />
-		<completion string="ord" />
-		<completion string="pow" />
-		<completion string="print" /> <!-- 3.0 -->
-		<completion string="property" />
-		<completion string="range" />
-		<completion string="raw_input" />
-		<completion string="reduce" />
-		<completion string="reload" />
-		<completion string="repr" />
-		<completion string="reversed" />
-		<completion string="round" />
-		<completion string="set" />
-		<completion string="setattr" />
-		<completion string="slice" />
-		<completion string="sorted" />
-		<completion string="staticmethod" />
-		<completion string="str" />
-		<completion string="sum" />
-		<completion string="super" />
-		<completion string="tuple" />
-		<completion string="type" />
-		<completion string="unichr" />
-		<completion string="unicode" />
-		<completion string="vars" />
-		<completion string="xrange" />
-		<completion string="zip" />
-		<completion string="__import__" />
+		
+		<completion string="filter">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:function}, ${2:iterable})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="float">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="format">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:value}${2:, ${3:format_spec}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="frozenset">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="getattr">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object}, ${2:name}${3:, ${4:default}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="globals">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>()</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="hasattr">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object}, ${2:name})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="hash">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="help">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="hex">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="id">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="input">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:prompt})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="int">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x${2:, ${3:radix}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="intern"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:string})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="isinstance">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object}, ${2:classinfo})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="issubclass">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:class}, ${2:classinfo})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="iter">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:o}${2:, ${3:sentinel}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="len">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:s})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="list">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="locals">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>()</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="long">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x${2:, ${3:radix}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="map">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:function}, ${2:iterable}${3:, ${4:...}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="max">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable}${2:, ${3:args}}${4:, ${5:key=${6:func}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="memoryview"> <!-- 3.0 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:obj})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="min">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable}${2:, ${3:args}}${4:, ${5:key=${6:func}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="next">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterator}${2:, ${3:default}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="object">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>()</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="oct">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="open">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:filename}${2:, ${3:mode${4:, ${5:bufsize}}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="ord">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:c})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="pow">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x}, ${2:y}${3:, ${4:z}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="print"> <!-- 3.0 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object, ...}${2:, ${3:sep='${4: }'}}${5:, ${6:end='${7:\n}'}}${8:, ${9:file=${10:sys.stdout}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="property">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:fget${2:, ${3:fset${4:, ${5:fdel${6:, ${7:doc}}}}}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="range">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:${2:start}, }${3:stop}${4:, ${5:step}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="raw_input"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:prompt})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="reduce"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:function}, ${2:iterable}${3:, ${4:initializer}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="reload"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:module})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="repr">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="reversed">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:seq})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="round">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:x}${2:, ${3:n}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="set">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="setattr">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object}, ${2:name}, ${3:value})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="slice">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:${2:start}, }${3:stop}${4:, ${5:step}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="sorted">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable${2:, ${3:cmp${4:, ${5:key${6:, ${7:reverse}}}}}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="staticmethod">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:function})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="str">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="sum">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable}${2:, ${3:start}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="super">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:type}${2:, ${3:object_or_type}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="tuple">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="type">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object_or_name}${2:, ${3:bases}, ${4:dict}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="unichr"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:i})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="unicode"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object${2:, ${3:encoding${4:, ${5:errors}}}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="vars">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:object})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="xrange"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:${2:start}, }${3:stop}${4:, ${5:step}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="zip">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:iterable, ...})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__import__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:name${2:, ${3:globals${4:, ${5:locals${6:, ${7:fromlist${8:, ${9:level}}}}}}}}})</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
 	</set>
 	
 	<set name="com.mthjones.python.builtins.statements">
@@ -138,100 +790,707 @@
 	</set>
 	
 	<set name="com.mthjones.python.builtins.special-method-names">
+		<!-- default behaviour -->
+		<behavior>
+			<append-dynamic>
+				<matched-suffix>(\s*:)|[^:]</matched-suffix>
+				<transform-into>(${1:self}):</transform-into>
+			</append-dynamic>
+		</behavior>
+		
 		<completion string="__abs__" />
-		<completion string="__add__" />
-		<completion string="__and__" />
-		<completion string="__bool__" />
-		<completion string="__call__" />
-		<completion string="__cmp__" />
-		<completion string="__coerce__" />
+		
+		<completion string="__add__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__and__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__bool__" /> <!-- 3.0 -->
+		
+		<completion string="__call__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}${2:, ${3:args}}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__cmp__"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__coerce__"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__complex__" />
-		<completion string="__contains__" />
+		
+		<completion string="__contains__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:item}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__del__" />
-		<completion string="__delete__" />
-		<completion string="__delattr__" />
-		<completion string="__delitem__" />
-		<completion string="__delslice__" />
-		<completion string="__dir__" />
-		<completion string="__div__" />
-		<completion string="__divmod__" />
+		
+		<completion string="__delete__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:instance}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__delattr__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:name}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__delitem__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:key}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__delslice__"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:i}, ${3:j}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__dir__" /> <!-- 3.0 -->
+		
+		<completion string="__div__"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__divmod__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__enter__" />
-		<completion string="__exit__" />
-		<completion string="__eq__" />
+		
+		<completion string="__exit__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:exc_type}, ${3:exc_value}, ${4:traceback}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__eq__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__float__" />
-		<completion string="__floordiv__" />
-		<completion string="__ge__" />
-		<completion string="__get__" />
-		<completion string="__getattr__" />
-		<completion string="__getattribute__" />
-		<completion string="__getitem__" />
-		<completion string="__getslice__" />
-		<completion string="__gt__" />
+		
+		<completion string="__floordiv__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__format__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:format_spec}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__ge__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__get__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:instance}, ${3:owner}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__getattr__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:name}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__getattribute__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:name}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__getitem__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:key}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__getslice__"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:i}, ${3:j}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__gt__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__hash__" />
-		<completion string="__hex__" />
-		<completion string="__iadd__" />
-		<completion string="__iand__" />
-		<completion string="__idiv__" />
-		<completion string="__idivmod__" />
-		<completion string="__ifloordiv__" />
-		<completion string="__ilshift__" />
-		<completion string="__imod__" />
-		<completion string="__imul__" />
+		
+		<completion string="__hex__" />> <!-- 2.6 -->
+		
+		<completion string="__iadd__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__iand__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__idiv__"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__idivmod__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__ifloordiv__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__ilshift__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__imod__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__imul__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__index__" />
-		<completion string="__init__" />
+		
+		<completion string="__init__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}${2:, ${3:args}}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__int__" />
+		
 		<completion string="__invert__" />
-		<completion string="__ior__" />
-		<completion string="__ipow__" />
-		<completion string="__irshift__" />
-		<completion string="__isub__" />
+		
+		<completion string="__ior__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__ipow__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__irshift__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__isub__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__iter__" />
-		<completion string="__itruediv__" />
-		<completion string="__ixor__" />
-		<completion string="__le__" />
+		
+		<completion string="__itruediv__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__ixor__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__le__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__len__" />
-		<completion string="__long__" />
-		<completion string="__lshift__" />
-		<completion string="__lt__" />
-		<completion string="__missing__" />
-		<completion string="__mod__" />
-		<completion string="__mul__" />
-		<completion string="__ne__" />
+		
+		<completion string="__long__" /> <!-- 2.6 -->
+		
+		<completion string="__lshift__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__lt__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__missing__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:key}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__mod__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__mul__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__ne__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__neg__" />
-		<completion string="__new__" />
-		<completion string="__nonzero__" />
-		<completion string="__oct__" />
-		<completion string="__or__" />
+		
+		<completion string="__new__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:cls}${2:, ${3:args}}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__nonzero__" /> <!-- 2.6 -->
+		
+		<completion string="__oct__" /> <!-- 2.6 -->
+		
+		<completion string="__or__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__pos__" />
-		<completion string="__pow__" />
-		<completion string="__radd__" />
-		<completion string="__rand__" />
-		<completion string="__rdiv__" />
-		<completion string="__rdivmod__" />
-		<completion string="__rfloordiv__" />
-		<completion string="__rlshift__" />
-		<completion string="__rmod__" />
-		<completion string="__rmul__" />
-		<completion string="__ror__" />
-		<completion string="__rpow__" />
-		<completion string="__rrshift__" />
-		<completion string="__rsub__" />
-		<completion string="__rtruediv__" />
-		<completion string="__rxor__" />
-		<completion string="__rcmp__" /> <!-- hasn't been supported since 2.1...should it be here? -->
+		
+		<completion string="__pow__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}${3:, ${4:modulo}}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__radd__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rand__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rcmp__"> <!-- hasn't been supported since 2.1...should it be here? -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rdiv__"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rdivmod__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__repr__" />
+		
 		<completion string="__reversed__" />
-		<completion string="__round__" />
-		<completion string="__rshift__" />
-		<completion string="__set__" />
-		<completion string="__setattr__" />
-		<completion string="__setitem__" />
-		<completion string="__setslice__" />
+		
+		<completion string="__rfloordiv__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rlshift__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rmod__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rmul__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__ror__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__round__"> <!-- 3.0 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}${2:, ${3:n}}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rpow__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rrshift__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rshift__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rsub__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rtruediv__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__rxor__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__set__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:instance}, ${3:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__setattr__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:name}, ${3:value}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__setitem__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:key}, ${3:value}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__setslice__"> <!-- 2.6 -->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:i}, ${3:j}, ${4:sequence}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
 		<completion string="__str__" />
-		<completion string="__sub__" />
-		<completion string="__truediv__" />
-		<completion string="__unicode__" />
-		<completion string="__xor__" />
+		
+		<completion string="__sub__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__truediv__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
+		
+		<completion string="__unicode__" /> <!-- 2.6 -->
+		
+		<completion string="__xor__">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s*:)|[^:]</matched-suffix>
+					<transform-into>(${1:self}, ${2:other}):</transform-into>
+				</append-dynamic>
+			</behavior>
+		</completion>
 	</set>
 	
 	<set name="com.mthjones.python.builtins.exceptions">
@@ -290,11 +1549,12 @@
 		<behavior>
 			<append-dynamic>
 				<matched-suffix>(\s*:)|[^:]</matched-suffix>
-				<transform-into>$0</transform-into>
+				<transform-into>$0 </transform-into>
 			</append-dynamic>
 			
 			<confirm-partial characters="._" />
 		</behavior>
+		
 		<completion string="__builtin__" /> <!-- 2.6 -->
 		<completion string="__future__" />
 		<completion string="__main__" />

@@ -4,11 +4,6 @@
 	Following standards as outlined by elliottcable at:
 		 http://wiki.macrabbit.com/forums/viewthread/117/
 	-->
-	
-	<!-- TODO:
-		- Differentiate between class and function decorators?
-		- Comprehensions? (dict/list/generators)
-	-->
 	<zones>
 		<include collection="language" />
 	</zones>
