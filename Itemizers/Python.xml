@@ -26,8 +26,7 @@ THE SOFTWARE.
 -->
 <itemizer>
 	<recipe name="container.function">
-		<start-selector>container.function:has-child(name:capture(name))</start-selector>
-		<end-selector>delimiter.container.end.function</end-selector>
+		<selector>container.function:has-child(name:capture(name))</selector>
 		<subrecipes>
 			<include-root-recipes />
 		</subrecipes>
@@ -35,8 +34,7 @@ THE SOFTWARE.
 	
 	<!-- Matches a class definition -->
 	<recipe name="container.class">
-		<start-selector>container.class:has-child(name:capture(name))</start-selector>
-		<end-selector>delimiter.container.end.class</end-selector>
+		<selector>container.class:has-child(name:capture(name))</selector>
 		<subrecipes>
 			<include-root-recipes />
 		</subrecipes>
@@ -44,8 +42,7 @@ THE SOFTWARE.
 	
 	<!-- Matches triple-quoted strings -->
 	<recipe name="metadata.comment.documentation">
-		<class>ESBaseItem</class>
-		<start-selector>metadata.comment.documentation > begin:capture(itemizer-firstused)</start-selector>
+		<start-selector>metadata.comment.documentation:capture(name) > begin</start-selector>
 		<end-selector>metadata.comment.documentation.end</end-selector>
 		<subrecipes>
 			<include-root-recipes />

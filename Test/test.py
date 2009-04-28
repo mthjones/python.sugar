@@ -120,6 +120,8 @@ ooooooooooooooooooooong
 # tuple:
 (1, 2, 3, 4, 5, 6)
 
+class XYZ:pass;
+
 # storage types
 @classwrapper
 class ABC(object, metaclass=Blah):
@@ -141,6 +143,19 @@ class ABC(object, metaclass=Blah):
 		file('some random path')
 		self.__init__
 		self.  do_something
+	
+	def b(self, a, b, c):
+		do_stuff
+	
+	def c():
+		def d():
+			print('hi')
+		
+	
+	class DEF:
+		def b():
+			do_stuff
+		
 	
 
 lambda abc=5, a, e, a=(1,2,3): print(x)
@@ -246,5 +261,8 @@ elif b:
 	print("b")
 else:
 	print("dunno")
+
+while abs(x) > 25:
+	do_stuff
 
 

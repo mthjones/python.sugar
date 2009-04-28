@@ -45,4 +45,18 @@ THE SOFTWARE.
 		<text>($1)$0</text>
 		<syntax-context>python, python *:not(literal.string, metadata.comment)</syntax-context>
 	</snippet>
+	
+	<snippet id="com.mthjones.TextActions.Python.OpenDoubleQuote" category="hidden">
+		<title>Open Double Quote</title>
+		<text-trigger key-equivalent='"'></text-trigger>
+		<text>"$1"$0</text>
+		<syntax-context>python, python *</syntax-context>
+	</snippet>
+	
+	<snippet id="com.mthjones.TextActions.Python.OpenSingleQuote" category="hidden">
+		<title>Open Single Quote</title>
+		<text-trigger key-equivalent="'"></text-trigger>
+		<text>'$1'$0</text>
+		<syntax-context>python, python *</syntax-context>
+	</snippet>
 </action-recipes>

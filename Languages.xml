@@ -45,7 +45,9 @@ THE SOFTWARE.
 		<description>A full syntax description of the Python programming language</description>
 		<author>Matt Jones</author>
 		<identifier>com.mthjones.Sugar.Python</identifier>
-		<version status="development">0.1</version>
+		<version status="preview">0.3b</version>
+		<download format="git">git://github.com/mthjones/python.sugar.git</download>
+		<url>http://github.com/mthjones/python.sugar/</url>
 		<dependencies>
 			<dependency id="name.elliottcable.Sugar.Regex">Regex</dependency>
 		</dependencies>

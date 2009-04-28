@@ -928,19 +928,24 @@ THE SOFTWARE.
 			</zone>
 			
 			<zone name="identifier.variable.named-parameter">
-                <starts-with>
-                    <expression>\b([a-zA-Z_][a-zA-Z_0-9]*)\s*(=)(?!=)</expression>
-                    <capture number="1" name="name"/>
-                    <capture number="2" name="keyword.operator.assignment" />
-                </starts-with>
-                <ends-with>
-                    <expression>\s*(?:(,)|(?=$\n?|[):]))</expression>
-                    <capture number="1" name="delimiter.separator.comma" />
-                </ends-with>
-                <subzones>
-                    <include collection="language" />
-                </subzones>
-            </zone>
+				<starts-with>
+					<expression>\b([a-zA-Z_][a-zA-Z_0-9]*)\s*(=)(?!=)</expression>
+					<capture number="1" name="name"/>
+					<capture number="2" name="keyword.operator.assignment" />
+				</starts-with>
+				<ends-with>
+					<expression>\s*(?:(?=(,))|(?=$\n?|[):]))</expression>
+					<capture number="1" name="delimiter.separator.comma" />
+				</ends-with>
+				<subzones>
+					<zone name="value">
+						<expression>.+</expression>
+						<subzones>
+							<include collection="language" />
+						</subzones>
+					</zone>
+				</subzones>
+			</zone>
 		</collection>
 		
 		<!--  
@@ -1032,7 +1037,7 @@ THE SOFTWARE.
 			<zone name="keyword.definition.class">
 				<expression>\b(class)\b</expression>
 			</zone>
-			<zone name="keyword.definition.def">
+			<zone name="keyword.definition.function">
 				<expression>\b(def)\b</expression>
 			</zone>
 			<zone name="keyword.definition.lambda">
@@ -1048,44 +1053,27 @@ THE SOFTWARE.
 		<collection name="container.class">
 			<zone name="container.class">
 				<starts-with>
-					<expression>^(\s*)(?=class\s+.+?\s*:\s*)</expression>
+					<expression>^(\s*)(class)\s+([a-zA-Z_]\w*)\s*((\().*?(\)))?\s*(:)\s*</expression>
 					<capture number="1" name="whitespace" />
+					<capture number="2" name="keyword.definition.class" />
+					<capture number="3" name="name" />
+					<capture number="4" name="container.parameters">
+						<subzones>
+							<include collection="identifier.variable.parameters" />
+						</subzones>
+					</capture>
+					<capture number="5" name="delimited.balanced.parenthesis.begin" />
+					<capture number="6" name="delimited.balanced.parenthesis.end" />
+					<capture number="7" name="delimiter.block.begin" />
 				</starts-with>
 				<ends-with>
-					<expression>(^(\1)$|^$)</expression>
+					<expression>((?:^\1(?:$|(?=[^\s])))|^$)</expression>
 					<capture number="1" name="delimiter.container.end.class" />
+					<capture number="2" name="whitespace" />
+					<capture number="3" name="delimiter.terminator" />
 				</ends-with>
-				
 				<subzones>
-					<!--<include syntax="container.statement.definition.class" />-->
-					<!--<include collection="language" />-->
-					<include collection="metadata.processing" />
-					<include collection="metadata.comment" />
-					
-					<include collection="literal.collection" />
-					
-					<!-- why? -->
-					<!--<include collection="container.class" />-->
-					<include collection="container.block" />
-					<include collection="container.function" />
-					<include collection="container.statement" />
-					
-					<include collection="identifier.decorator" />
-					<include collection="identifier.variable" />
-					<include collection="identifier.class" />
-					<include collection="identifier.constant" />
-					
-					<include collection="literal.keyword" />a
-					<include collection="literal.string" />
-					<include collection="literal.numeric" />
-					
-					<include collection="delimiter" />
-					
-					<include collection="keyword" />
-					<include collection="identifier.function" />
-					<include collection="identifier.type" />
-					
-					<include collection="operator" />
+					<include collection="language" />
 				</subzones>
 			</zone>
 		</collection>
@@ -1093,56 +1081,107 @@ THE SOFTWARE.
 		<collection name="container.function">
 			<zone name="container.function">
 				<starts-with>
-					<expression>^(\s*)(?=def\s+.+?\(.*?\)\s*:\s*)</expression>
+					<expression>^(\s*)(def)\s+([a-zA-Z_]\w*)((\().*?(\)))\s*(:)\s*$</expression>
 					<capture number="1" name="whitespace" />
+					<capture number="2" name="keyword.definition.function" />
+					<capture number="3" name="name" />
+					<capture number="4" name="container.parameters">
+						<subzones>
+							<include collection="identifier.variable.parameters" />
+						</subzones>
+					</capture>
+					<capture number="5" name="delimited.balanced.parenthesis.begin" />
+					<capture number="6" name="delimited.balanced.parenthesis.end" />
+					<capture number="7" name="delimiter.block.begin" />
 				</starts-with>
 				<ends-with>
-					<expression>(^(\1)$|^$)</expression>
+					<expression>((?:^\1(?:$|(?=[^\s])))|^$)</expression>
 					<capture number="1" name="delimiter.container.end.function" />
 				</ends-with>
 				<subzones>
-					<!--<include syntax="container.statement.definition.class" />-->
-					<!--<include collection="language" />-->
-					<include collection="metadata.processing" />
-					<include collection="metadata.comment" />
-					
-					<include collection="literal.collection" />
-					
-					<include collection="container.class" />
-					<include collection="container.block" />
-					<!-- why? -->
-					<!--<include collection="container.function" />-->
-					<include collection="container.statement" />
-					
-					<include collection="identifier.decorator" />
-					<include collection="identifier.variable" />
-					<include collection="identifier.class" />
-					<include collection="identifier.constant" />
-					
-					<include collection="literal.keyword" />a
-					<include collection="literal.string" />
-					<include collection="literal.numeric" />
-					
-					<include collection="delimiter" />
-					
-					<include collection="keyword" />
-					<include collection="identifier.function" />
-					<include collection="identifier.type" />
-					
-					<include collection="operator" />
+					<include collection="language" />
 				</subzones>
 			</zone>
 		</collection>
 		
 		<collection name="container.block">
 			<zone name="container.block">
+				<subzones>
+					<include collection="container.statement" />
+				</subzones>
+			</zone>
+		</collection>
+		
+		<!--
+		<collection name="container.expression">
+			<zone name="container.expression">
+			</zone>
+		</collection>
+		-->
+		<collection name="container.statement">
+		<!--
+			<zone name="container.statement.definition.class">
+				<starts-with>
+					<expression>(class)\s+([a-zA-Z_]\w*)\s*</expression>
+					<capture number="1" name="keyword.definition.class" />
+					<capture number="2" name="name" />
+				</starts-with>
+				<ends-with>
+					<expression>\s*(:)\s*</expression>
+					<capture number="1" name="delimiter.container.begin.class" />
+				</ends-with>
+				<subzones>
+					<zone name="container.parameters">
+						<starts-with>
+							<expression>(\()</expression>
+							<capture number="1" name="delimiter.balanced.parenthesis.begin" />
+						</starts-with>
+						<ends-with>
+							<expression>(?=(\))\s*:)</expression>
+							<capture number="1" name="delimiter.balanced.parenthesis.end" />
+						</ends-with>
+						<subzones>
+							<include collection="identifier.variable.parameters" />
+						</subzones>
+					</zone>
+				</subzones>
+			</zone>
+			
+			<zone name="container.statement.definition.function">
+				<starts-with>
+					<expression>(def)\s+([a-zA-Z_]\w*)\s*</expression>
+					<capture number="1" name="keyword.definition.function" />
+					<capture number="2" name="name" />
+				</starts-with>
+				<ends-with>
+					<expression>\s*(:)\s*</expression>
+					<capture number="1" name="delimiter.container.begin.function" />
+				</ends-with>
+				<subzones>
+					<zone name="container.parameters">
+						<starts-with>
+							<expression>(\()</expression>
+							<capture number="1" name="delimiter.balanced.parenthesis.begin" />
+						</starts-with>
+						<ends-with>
+							<expression>(?=(\))\s*:)</expression>
+							<capture number="1" name="delimiter.balanced.parenthesis.end" />
+						</ends-with>
+						<subzones>
+							<include collection="identifier.variable.parameters" />
+						</subzones>
+					</zone>
+				</subzones>
+			</zone>
+			-->
+			<zone name="container.statement.definition.block">
 				<starts-with>
 					<expression>(lambda)(?=\s+)</expression>
-					<capture number="1" name="keyword.definition.lambda" />
+					<capture number="1" name="keyword.definition.function" />
 				</starts-with>
 				<ends-with>
 					<expression>(:)</expression>
-					<capture number="1" name="delimiter.separator.block-start" />
+					<capture number="1" name="delimiter.container.begin.function" />
 				</ends-with>
 				<subzones>
 					<zone name="container.parameters">
@@ -1178,71 +1217,9 @@ THE SOFTWARE.
 					</zone>
 				</subzones>
 			</zone>
-		</collection>
-		
-		<!--
-		<collection name="container.expression">
-			<zone name="container.expression">
-			</zone>
-		</collection>
-		-->
-		<collection name="container.statement">
-			<zone name="container.statement.definition.class">
-				<starts-with>
-					<expression>(class)\s+([a-zA-Z_]\w*)\s*</expression>
-					<capture number="1" name="keyword.definition.class" />
-					<capture number="2" name="name" />
-				</starts-with>
-				<ends-with>
-					<expression>\s*(:)\s*$</expression>
-					<capture number="1" name="delimiter.container.begin.class" />
-				</ends-with>
-				<subzones>
-					<zone name="container.parameters">
-						<starts-with>
-							<expression>(\()</expression>
-							<capture number="1" name="delimiter.balanced.parenthesis.begin" />
-						</starts-with>
-						<ends-with>
-							<expression>(?=(\))\s*:)</expression>
-							<capture number="1" name="delimiter.balanced.parenthesis.end" />
-						</ends-with>
-						<subzones>
-							<include collection="identifier.variable.parameters" />
-						</subzones>
-					</zone>
-				</subzones>
-			</zone>
-			
-			<zone name="container.statement.definition.function">
-				<starts-with>
-					<expression>(def)\s+([a-zA-Z_]\w*)\s*</expression>
-					<capture number="1" name="keyword.definition.function" />
-					<capture number="2" name="name" />
-				</starts-with>
-				<ends-with>
-					<expression>\s*(:)\s*$</expression>
-					<capture number="1" name="delimiter.container.begin.function" />
-				</ends-with>
-				<subzones>
-					<zone name="container.parameters">
-						<starts-with>
-							<expression>(\()</expression>
-							<capture number="1" name="delimiter.balanced.parenthesis.begin" />
-						</starts-with>
-						<ends-with>
-							<expression>(?=(\))\s*:)</expression>
-							<capture number="1" name="delimiter.balanced.parenthesis.end" />
-						</ends-with>
-						<subzones>
-							<include collection="identifier.variable.parameters" />
-						</subzones>
-					</zone>
-				</subzones>
-			</zone>
 			
 			<zone name="container.statement.import.from">
-				<expression>^\s*(from)\s+([a-zA-Z_.][\w.]*)+\s+(import)\s+((?:[a-zA-Z_]\w*)|(?:\*))(\s+(as)\s+([a-zA-Z_]\w*))?\s*$</expression>
+				<expression>^\s*(from)\s+([a-zA-Z_.][\w.]*)+\s+(import)\s+((?:[a-zA-Z_]\w*)|(?:\*))(\s+(as)\s+([a-zA-Z_]\w*))?\s*</expression>
 				<capture number="1" name="keyword.control.import.from" />
 				<capture number="2" name="module" />
 				<capture number="3" name="keyword.control.import.import" />
@@ -1252,7 +1229,7 @@ THE SOFTWARE.
 			</zone>
 			
 			<zone name="container.statement.import.import">
-				<expression>^\s*(import)\s+([a-zA-Z_.][\w.]*)(\s+(as)\s+([a-zA-Z_]\w*))?\s*$</expression>
+				<expression>^\s*(import)\s+([a-zA-Z_.][\w.]*)(\s+(as)\s+([a-zA-Z_]\w*))?\s*</expression>
 				<capture number="1" name="keyword.control.import.import" />
 				<capture number="2" name="module" />
 				<capture number="4" name="keyword.modifier.as" />
@@ -1268,6 +1245,9 @@ THE SOFTWARE.
 				<ends-with>
 					<expression>:\s*$</expression>
 				</ends-with>
+				<subzones>
+					<include collection="language" />
+				</subzones>
 			</zone>
 			
 			<zone name="container.statement.control.flow.elif">
@@ -1279,10 +1259,13 @@ THE SOFTWARE.
 				<ends-with>
 					<expression>:\s*$</expression>
 				</ends-with>
+				<subzones>
+					<include collection="language" />
+				</subzones>
 			</zone>
 			
 			<zone name="container.statement.control.flow.else">
-				<expression>^\s*(else)\s*:\s*$</expression>
+				<expression>^\s*(else)\s*:\s*</expression>
 				<capture number="1" name="keyword.control.flow.else" />
 			</zone>
 			
@@ -1294,6 +1277,9 @@ THE SOFTWARE.
 				<ends-with>
 					<expression>:\s*$</expression>
 				</ends-with>
+				<subzones>
+					<include collection="language" />
+				</subzones>
 			</zone>
 			
 			<zone name="container.statement.control.flow.for">
@@ -1304,10 +1290,42 @@ THE SOFTWARE.
 				<ends-with>
 					<expression>:\s*$</expression>
 				</ends-with>
+				<subzones>
+					<include collection="language" />
+				</subzones>
+			</zone>
+			
+			<zone name="container.statement.control.flow.with.as">
+				<expression>^\s*(with)\s+([\w()]+?)\s+(as)\s+([\w()]+)\s*(:)\s*</expression>
+				<capture number="1" name="keyword.control.flow.with" />
+				<capture number="2" name="input">
+					<subzones>
+						<include collection="language" />
+					</subzones>
+				</capture>
+				<capture number="3" name="keyword.control.other.as" />
+				<capture number="4" name="name">
+					<subzones>
+						<include collection="language" />
+					</subzones>
+				</capture>
+			</zone>
+			
+			<zone name="container.statement.control.flow.with">
+				<starts-with>
+					<expression>^\s*(with)\s+(?=[\w()]+)</expression>
+					<capture number="1" name="keyword.control.flow.with" />
+				</starts-with>
+				<ends-with>
+					<expression>:\s*$</expression>
+				</ends-with>
+				<subzones>
+					<include collection="language" />
+				</subzones>
 			</zone>
 			
 			<zone name="container.statement.exception.try">
-				<expression>^\s*(try)\s*:\s*$</expression>
+				<expression>^\s*(try)\s*:\s*</expression>
 				<capture number="1" name="keyword.control.exception.try" />
 			</zone>
 			
@@ -1319,10 +1337,13 @@ THE SOFTWARE.
 				<ends-with>
 					<expression>:\s*$</expression>
 				</ends-with>
+				<subzones>
+					<include collection="language" />
+				</subzones>
 			</zone>
 			
 			<zone name="container.statement.exception.finally">
-				<expression>^\s*(finally)\s*:\s*$</expression>
+				<expression>^\s*(finally)\s*:\s*</expression>
 				<capture number="1" name="keyword.control.exception.finally" />
 			</zone>
 			
@@ -1334,6 +1355,9 @@ THE SOFTWARE.
 				<ends-with>
 					<expression>\s*$</expression>
 				</ends-with>
+				<subzones>
+					<include collection="language" />
+				</subzones>
 			</zone>
 		</collection>
 		

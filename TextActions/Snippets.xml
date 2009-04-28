@@ -35,9 +35,7 @@ THE SOFTWARE.
 		${12:pass}
 	}
 	
-	$0
-
-]]></text>
+	$0]]></text>
 		<syntax-context>python, python container.class, python container.function</syntax-context>
 	</snippet>
 	
@@ -48,8 +46,7 @@ THE SOFTWARE.
 	${3:"""${4:docstring}"""}
 	${5:pass}
 	
-	$0
-]]></text>
+	$0]]></text>
 		<syntax-context>python, python container.class, python container.function</syntax-context>
 	</snippet>
 	
