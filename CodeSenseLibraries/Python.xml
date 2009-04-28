@@ -175,7 +175,7 @@ THE SOFTWARE.
 			<behavior>
 				<append-dynamic>
 					<matched-suffix>(\s*:)|[^:]</matched-suffix>
-					<transform-into>(${1:source}, ${2:filename}$, ${3:mode}${4:, ${5:flags}${6:, ${7:dont_inherit}}})</transform-into>
+					<transform-into>(${1:source}, ${2:filename}, ${3:mode}${4:, ${5:flags}${6:, ${7:dont_inherit}}})</transform-into>
 				</append-dynamic>
 			</behavior>
 		</completion>

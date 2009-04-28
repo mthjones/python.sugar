@@ -27,7 +27,7 @@ THE SOFTWARE.
 <codesense>
 	<!-- still broken -->
 	<provider>
-		<selector>python container.function</selector>
+		<selector>python keyword.definition.function ~ *</selector>
 		<completions>com.mthjones.python.builtins.special-method-names</completions>
 		<complete-match>[a-zA-Z_]\w*</complete-match>
 	</provider>

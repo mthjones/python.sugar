@@ -34,10 +34,11 @@ THE SOFTWARE.
 		${10:"""${11:docstring}"""}
 		${12:pass}
 	}
+	
 	$0
 
 ]]></text>
-		<syntax-context>python, python *:not(literal.string, metadata.comment)</syntax-context>
+		<syntax-context>python, python container.class, python container.function</syntax-context>
 	</snippet>
 	
 	<snippet id="com.mthjones.TextActions.Python.Function" category="actions.text.Python/python.tools.Snippets.container">
@@ -46,16 +47,17 @@ THE SOFTWARE.
 		<text><![CDATA[def ${1:function_name}(${2:args}):
 	${3:"""${4:docstring}"""}
 	${5:pass}
-$0
+	
+	$0
 ]]></text>
-		<syntax-context>python, python *:not(literal.string, metadata.comment)</syntax-context>
+		<syntax-context>python, python container.class, python container.function</syntax-context>
 	</snippet>
 	
 	<snippet id="com.mthjones.TextActions.Python.Lambda" category="actions.text.Python/python.tools.Snippets.container">
 		<title>Lambda</title>
 		<text-trigger>lambda</text-trigger>
 		<text><![CDATA[lambda ${1:args}: ${2:pass}]]></text>
-		<syntax-context>python, python *:not(literal.string, metadata.comment)</syntax-context>
+		<syntax-context>python, python container.class, python container.function</syntax-context>
 	</snippet>
 	
 	<snippet id="com.mthjones.TextActions.Python.FromImport" category="actions.text.Python/python.tools.Snippets.import">

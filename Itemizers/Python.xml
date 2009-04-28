@@ -26,8 +26,8 @@ THE SOFTWARE.
 -->
 <itemizer>
 	<recipe name="container.function">
-		<start-selector>container.function:has-child(name:capture(name)):has-child(whitespace:capture(whitespace))</start-selector>
-		<end-selector>sourcecode.python[text == $whitespace.text]</end-selector>
+		<start-selector>container.function:has-child(name:capture(name))</start-selector>
+		<end-selector>delimiter.container.end.function</end-selector>
 		<subrecipes>
 			<include-root-recipes />
 		</subrecipes>
@@ -35,8 +35,8 @@ THE SOFTWARE.
 	
 	<!-- Matches a class definition -->
 	<recipe name="container.class">
-		<start-selector>container.class:has-child(name:capture(name)):has-child(whitespace:capture(whitespace))</start-selector>
-		<end-selector>sourcecode.python[text == $whitespace.text]</end-selector>
+		<start-selector>container.class:has-child(name:capture(name))</start-selector>
+		<end-selector>delimiter.container.end.class</end-selector>
 		<subrecipes>
 			<include-root-recipes />
 		</subrecipes>
