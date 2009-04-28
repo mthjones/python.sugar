@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# encoding: utf-8
 """
 @description Python Sugar tests
 @author 	 Matt Jones <m.t.h.jones@gmail.com>
@@ -141,7 +142,10 @@ lambda abc=5, a, e: print(x)
 
 # keywords
 from blah import *
+from abc import abc
 import a
+
+from Calendar import something as name
 
 from
 

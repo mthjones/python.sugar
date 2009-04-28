@@ -44,6 +44,7 @@ THE SOFTWARE.
 			<include collection="container.class" />
 			<include collection="container.block" />
 			<include collection="container.function" />
+			<include collection="container.statement" />
 			
 			<include collection="identifier.decorator" />
 			<include collection="identifier.variable" />
@@ -1048,10 +1049,11 @@ THE SOFTWARE.
 		<collection name="container.class">
 			<zone name="container.class">
 				<starts-with>
-					<expression>^\s*(class)\s+(?=([a-zA-Z_]\w*)\s*(\())</expression>
-					<capture number="1" name="keyword.definition.function" />
-					<capture number="2" name="name" />
-					<capture number="3" name="delimiter.balanced.parenthesis.begin" />
+					<expression>(^\s*)(class)\s+(?=([a-zA-Z_]\w*)\s*(\())</expression>
+					<capture number="1" name="whitespace" />
+					<capture number="2" name="keyword.definition.function" />
+					<capture number="3" name="name" />
+					<capture number="4" name="delimiter.balanced.parenthesis.begin" />
 				</starts-with>
 				<ends-with>
 					<expression>(\))\s*(?:(\:)|(.*$\n?))</expression>
@@ -1080,10 +1082,11 @@ THE SOFTWARE.
 		<collection name="container.function">
 			<zone name="container.function">
 				<starts-with>
-					<expression>^\s*(def)\s+(?=([a-zA-Z_]\w*)\s*(\())</expression>
-					<capture number="1" name="keyword.definition.function" />
-					<capture number="2" name="name" />
-					<capture number="3" name="delimiter.balanced.parenthesis.begin" />
+					<expression>(^\s*)(def)\s+(?=([a-zA-Z_]\w*)\s*(\())</expression>
+					<capture number="1" name="whitespace" />
+					<capture number="2" name="keyword.definition.function" />
+					<capture number="3" name="name" />
+					<capture number="4" name="delimiter.balanced.parenthesis.begin" />
 				</starts-with>
 				<ends-with>
 					<expression>(\))\s*(?:(\:)|(.*$\n?))</expression>
@@ -1140,12 +1143,27 @@ THE SOFTWARE.
 			<zone name="container.expression">
 			</zone>
 		</collection>
-		
+		-->
 		<collection name="container.statement">
-			<zone name="container.statement">
+			<zone name="container.statement.import.from">
+				<expression>^\s*(from)\s+([a-zA-Z_.][\w.]*)+\s+(import)\s+((?:[a-zA-Z_]\w*)|(?:\*))(\s+(as)\s+([a-zA-Z_]\w*))?\s*$</expression>
+				<capture number="1" name="keyword.control.import.from" />
+				<capture number="2" name="module" />
+				<capture number="3" name="keyword.control.import.import" />
+				<capture number="4" name="item" />
+				<capture number="6" name="keyword.modifier.as" />
+				<capture number="7" name="name" />
+			</zone>
+			
+			<zone name="container.statement.import.import">
+				<expression>^\s*(import)\s+([a-zA-Z_.][\w.]*)(\s+(as)\s+([a-zA-Z_]\w*))?\s*$</expression>
+				<capture number="1" name="keyword.control.import.import" />
+				<capture number="2" name="module" />
+				<capture number="4" name="keyword.modifier.as" />
+				<capture number="5" name="name" />
 			</zone>
 		</collection>
-		-->
+		
 		<!--  
 			============
 			  Metadata  
@@ -1187,11 +1205,11 @@ THE SOFTWARE.
 			<zone name="metadata.comment.documentation">
 				<starts-with>
 					<expression>(('|"){3})</expression>
-					<capture number="1" name="doc.begin" />
+					<capture number="1" name="begin" />
 				</starts-with>
 				<ends-with>
 					<expression>\1</expression>
-					<capture number="0" name="doc.end" />
+					<capture number="0" name="end" />
 				</ends-with>
 				<subzones>
 					<include collection="literal.escape" />

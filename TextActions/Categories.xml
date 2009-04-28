@@ -30,4 +30,5 @@ THE SOFTWARE.
 	</category>
 	
 	<category id="python.tools.Snippets.container" show="inline separated"></category>
+	<category id="python.tools.Snippets.import" show="inline separated"></category>
 </action-categories>

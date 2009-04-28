@@ -25,18 +25,25 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 <codesense>
+	<!-- still broken -->
 	<provider>
-		<selector>python, python *:not(literal.string, metadata.comment, container.function > name, container.class > name)</selector>
-		<completions>com.mthjones.python.builtins.functions</completions>
-		<completions>com.mthjones.python.builtins.statements</completions>
-		<completions>com.mthjones.python.builtins.exceptions</completions>
+		<selector>python container.function</selector>
+		<completions>com.mthjones.python.builtins.special-method-names</completions>
+		<complete-match>[a-zA-Z_]\w*</complete-match>
+	</provider>
+	
+	<!-- from and import statements -->
+	<provider>
+		<selector>python container.statement.import.from, python container.statement.import.import </selector>
 		<completions>com.mthjones.python.modules</completions>
 		<complete-match>[a-zA-Z_][\w.]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>python container.function > name</selector>
-		<completions>com.mthjones.python.builtins.special-method-names</completions>
-		<complete-match>[a-zA-Z_]\w*</complete-match>
+		<selector>python, python *:not(literal.string, metadata.comment, container.function, python container.statement.import.from, python container.statement.import.import)</selector>
+		<completions>com.mthjones.python.builtins.functions</completions>
+		<completions>com.mthjones.python.builtins.statements</completions>
+		<completions>com.mthjones.python.builtins.exceptions</completions>
+		<complete-match>[a-zA-Z_][\w.]*</complete-match>
 	</provider>
 </codesense>

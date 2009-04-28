@@ -25,6 +25,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 <itemizer>
+	<recipe name="container.function">
+		<start-selector>container.function:has-child(name:capture(name)):has-child(whitespace:capture(whitespace))</start-selector>
+		<end-selector>sourcecode.python[text == $whitespace.text]</end-selector>
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>
+	
+	<!-- Matches a class definition -->
+	<recipe name="container.class">
+		<start-selector>container.class:has-child(name:capture(name)):has-child(whitespace:capture(whitespace))</start-selector>
+		<end-selector>sourcecode.python[text == $whitespace.text]</end-selector>
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>
+	
+	<!-- Matches triple-quoted strings -->
+	<recipe name="metadata.comment.documentation">
+		<class>ESBaseItem</class>
+		<start-selector>metadata.comment.documentation > begin:capture(itemizer-firstused)</start-selector>
+		<end-selector>metadata.comment.documentation.end</end-selector>
+		<subrecipes>
+			<include-root-recipes />
+		</subrecipes>
+	</recipe>
+	
 	<!-- Matches a shebang line (like `#!/usr/bin/env python`) -->
 	<recipe name="metadata.processing.comment.shebang">
 		<selector>metadata.processing.comment.shebang > path:capture(name)</selector>
@@ -33,27 +60,5 @@ THE SOFTWARE.
 	<!-- Matches an encoding line (like `# encoding: utf-8`) -->
 	<recipe name="metadata.processing.comment.encoding">
 		<selector>metadata.processing.comment.encoding > encoding:capture(name)</selector>
-	</recipe>
-	
-	<recipe name="function">
-		<selector>container.function > name:capture(name)</selector>
-	</recipe>
-	
-	<!-- Matches a class definition -->
-	<recipe name="class">
-		<selector>container.class > name:capture(name)</selector>
-		<!--<start-selector>container.class:has-child(name:capture(name))</start-selector>
-		<end-selector>container.class:has-child(whitespace:capture(name))</end-selector>-->
-		<subrecipes>
-			<include-root-recipes />
-		</subrecipes>
-	</recipe>
-	
-	<!-- Matches tripe-quoted strings -->
-	<recipe name="docstring">
-		<selector>metadata.comment.documentation > docstring:capture(name)</selector>
-		<subrecipes>
-			<include-root-recipes />
-		</subrecipes>
 	</recipe>
 </itemizer>

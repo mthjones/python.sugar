@@ -57,4 +57,18 @@ $0
 		<text><![CDATA[lambda ${1:args}: ${2:pass}]]></text>
 		<syntax-context>python, python *:not(literal.string, metadata.comment)</syntax-context>
 	</snippet>
+	
+	<snippet id="com.mthjones.TextActions.Python.FromImport" category="actions.text.Python/python.tools.Snippets.import">
+		<title>From Import</title>
+		<text-trigger>from</text-trigger>
+		<text><![CDATA[from ${1:module} import ${2:something}${3: as ${4:name}}]]></text>
+		<syntax-context>python, python container.class, python container.function</syntax-context>
+	</snippet>
+	
+	<snippet id="com.mthjones.TextActions.Python.Import" category="actions.text.Python/python.tools.Snippets.import">
+		<title>Import</title>
+		<text-trigger>import</text-trigger>
+		<text><![CDATA[import ${1:module}${2: as ${3:name}}]]></text>
+		<syntax-context>python, python container.class, python container.function</syntax-context>
+	</snippet>
 </action-recipes>
