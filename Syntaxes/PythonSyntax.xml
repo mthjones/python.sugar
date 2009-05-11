@@ -1401,7 +1401,7 @@ THE SOFTWARE.
 			
 			<zone name="metadata.comment.documentation">
 				<starts-with>
-					<expression>(('|"){3})</expression>
+					<expression>(('|")\2\2)</expression>
 					<capture number="1" name="begin" />
 				</starts-with>
 				<ends-with>
